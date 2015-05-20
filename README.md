@@ -5,6 +5,10 @@ A simplistic command line server status checker for the popular game League of L
 
 This uses the publicly available api that can be found on http://developer.riotgames.com to determine server status for all regions.
 
+## Get
+
+    go get github.com/theTechnoWeenie/lol-service-status
+
 ## Build
 
     go build
