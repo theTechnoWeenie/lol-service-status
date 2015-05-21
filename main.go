@@ -29,6 +29,7 @@ type Statuses struct {
 var base_url = "http://status.leagueoflegends.com/"
 
 func main() {
+	fmt.Println("Fetching shards...")
 	shards := getShards()
 	for index, shard := range shards {
 		fmt.Printf("%d : %s\n", index, shard.Name)
