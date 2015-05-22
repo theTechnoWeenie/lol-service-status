@@ -37,7 +37,7 @@ func main() {
 	fmt.Println("Enter shard:")
 	reader := bufio.NewReader(os.Stdin)
 	text, _ := reader.ReadString('\n')
-	shard_index, conversion_error := strconv.Atoi(strings.Replace(text, "\n", "", -1))
+	shard_index, conversion_error := strconv.Atoi(cleanString(text))
 	if conversion_error != nil {
 		panic(conversion_error)
 	}
@@ -61,6 +61,7 @@ func getShards() []Shard {
 	}
 	var shardList []Shard
 	err = json.Unmarshal(raw_json, &shardList)
+	fmt.Println(raw_json)
 	if err != nil {
 		panic(err)
 	}
@@ -75,4 +76,10 @@ func getStatuses(region string) []Status {
 	var services Statuses
 	json.Unmarshal(raw, &services)
 	return services.Services
+}
+
+func cleanString(text string) string {
+	text = strings.Replace(text, "\n", "", -1)
+	text = strings.Replace(text, "\r", "", -1)
+	return text
 }
